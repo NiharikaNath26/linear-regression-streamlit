@@ -470,8 +470,8 @@ for name, model in models.items():
     y_train_pred = model.predict(X_train)
     y_test_pred = model.predict(X_test)
 
-    train_rmse = mean_squared_error(y_train, y_train_pred, squared=False)
-    test_rmse = mean_squared_error(y_test, y_test_pred, squared=False)
+    train_rmse = mean_squared_error(y_train, y_train_pred)
+    test_rmse = mean_squared_error(y_test, y_test_pred)
     train_r2 = r2_score(y_train, y_train_pred)
     test_r2 = r2_score(y_test, y_test_pred)
 
@@ -551,8 +551,8 @@ y_train_pred = best_model.predict(X_train_poly)
 y_test_pred = best_model.predict(X_test_poly)
 
 # Evaluate
-train_rmse = mean_squared_error(y_train, y_train_pred, squared=False)
-test_rmse = mean_squared_error(y_test, y_test_pred, squared=False)
+train_rmse = mean_squared_error(y_train, y_train_pred)
+test_rmse = mean_squared_error(y_test, y_test_pred)
 train_r2 = r2_score(y_train, y_train_pred)
 test_r2 = r2_score(y_test, y_test_pred)
 
