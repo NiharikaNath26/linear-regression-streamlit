@@ -1,4 +1,4 @@
-#Mobile Price prediction ML project
+# Mobile Price prediction ML project
 
 This project aims to build and deploy an ElasticNet regression model for predicting cellphone prices using a dataset of cellphone specifications. The model is trained and evaluated using various techniques, and a user-friendly interface is provided through a Streamlit application.
 
