@@ -272,7 +272,8 @@ sns.set(style="whitegrid")
 
 
 # Adjust the path as needed in your Jupyter/Colab environment
-mobile_price = pd.read_excel('Cellphone.xlsx', sheet_name='Sheet1')
+mobile_price = pd.read_csv('Cellphone.csv')
+
 
 
 # ### ii.	Perform the EDA and do the visualizations.
