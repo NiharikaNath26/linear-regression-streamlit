@@ -244,7 +244,7 @@
 # In[1]:
 
 
-get_ipython().system('pip install xgboost')
+
 
 import pandas as pd
 import numpy as np
@@ -262,8 +262,7 @@ from sklearn.neighbors import KNeighborsRegressor
 from sklearn.svm import SVR
 from sklearn.tree import DecisionTreeRegressor
 
-# Fix the typo in the magic command
-get_ipython().run_line_magic('matplotlib', 'inline')
+
 
 # Configure plot styles
 sns.set(style="whitegrid")
@@ -495,22 +494,22 @@ pd.DataFrame(results)
 # ## Performance Metrics:
 # 
 # | Model       | Train RMSE | Test RMSE | Train R2 | Test R2 |
-# |-------------|------------|-----------|----------|---------|
-# | Linear      | 159.45     | 226.11    | 0.9246   | 0.8115  |
-# | Ridge       | 159.67     | 222.14    | 0.9244   | 0.8180  |
-# | Lasso       | 159.45     | 225.87    | 0.9246   | 0.8119  |
-# | ElasticNet  | 161.80     | 213.68    | 0.9224   | **0.8316**  |
+#|-------------|------------|-----------|----------|---------|
+#| Linear      | 168.22     | 166.76   | 0.9079   | 0.8891  |
+#| Ridge       | 168.27     | 164.57   | 0.9079   | 0.8920  |
+#| Lasso       | 168.22     | 166.57    | 0.9079   | 0.8893  |
+#| ElasticNet  | 168.76     | 160.04    | 0.9073   | **0.8978**  |
 # 
 # ---
 # 
 # ## Observations:
 # 
-# - All models perform similarly on the **training set** (R2 = 0.92), showing no underfitting.
+# - All models perform similarly on the **training set** (R2 = 0.90), showing no underfitting.
 # - The *test R2* reveals generalization ability:
 #   - Linear, Ridge, and Lasso perform well, but ElasticNet performs **best**.
 # - *ElasticNet* has:
-#   - The *lowest Test RMSE (213.68)*  lowest average error
-#   - The *highest Test R2 (0.8316)* best variance explanation on test data
+#   - The *lowest Test RMSE (160.04)*  lowest average error
+#   - The *highest Test R2 (0.8978)* best variance explanation on test data
 # 
 # ---
 # ### Conclusion: 
