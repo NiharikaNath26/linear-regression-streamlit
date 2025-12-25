@@ -96,3 +96,61 @@ st.write(
     "ElasticNet performs best due to balanced regularization, "
     "reducing overfitting while maintaining strong predictive power."
 )
+st.divider()
+st.header("Used Phone Price Prediction")
+
+# ------------------------------
+# User Inputs
+# ------------------------------
+col1, col2 = st.columns(2)
+
+with col1:
+    storage = st.number_input("Storage (GB)", min_value=0, max_value=512, value=64)
+    screen_size = st.number_input("Screen Size (inches)", min_value=0.0, max_value=8.0, value=6.0)
+    rear_camera = st.number_input("Rear Camera (MP)", min_value=0, max_value=200, value=48)
+    battery = st.number_input("Battery Capacity (mAh)", min_value=0, max_value=7000, value=4000)
+
+with col2:
+    front_camera = st.number_input("Front Camera (MP)", min_value=0, max_value=100, value=16)
+    ram = st.number_input("RAM (GB)", min_value=0, max_value=32, value=4)
+    cpu_core = st.number_input("CPU Cores", min_value=1, max_value=16, value=8)
+    cpu_freq = st.number_input("CPU Frequency (GHz)", min_value=0.5, max_value=4.0, value=2.0)
+
+condition = st.selectbox("Condition", ["Like New", "Good", "Average", "Poor"])
+phone_type = st.selectbox("Type", ["Android", "iOS"])
+brand = st.selectbox("Brand", ["Samsung", "Apple", "Google", "Xiaomi", "Other"])
+
+# ------------------------------
+# Encode categorical inputs
+# ------------------------------
+condition_map = {"Like New": 3, "Good": 2, "Average": 1, "Poor": 0}
+type_map = {"Android": 0, "iOS": 1}
+
+condition_encoded = condition_map[condition]
+type_encoded = type_map[phone_type]
+
+# ------------------------------
+# Predict Button
+# ------------------------------
+if st.button("Predict Price"):
+    input_data = np.array([[ 
+        storage,
+        screen_size,
+        rear_camera,
+        front_camera,
+        battery,
+        ram,
+        cpu_core,
+        cpu_freq,
+        condition_encoded,
+        type_encoded
+    ]])
+
+    # Scale input using training scaler
+    input_scaled = scaler.transform(input_data)
+
+    # Use ElasticNet (best balanced model)
+    prediction = models["ElasticNet"].predict(input_scaled)
+
+    st.success(f"Estimated Price: ₹ {prediction[0]:,.2f}")
+
